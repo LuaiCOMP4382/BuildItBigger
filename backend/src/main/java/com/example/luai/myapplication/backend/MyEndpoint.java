@@ -6,6 +6,7 @@
 
 package com.example.luai.myapplication.backend;
 
+import com.funny.jokes.JokeData;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -33,6 +34,15 @@ public class MyEndpoint {
     public MyBean sayHi(@Named("name") String name) {
         MyBean response = new MyBean();
         response.setData("Hi, " + name);
+
+        return response;
+    }
+
+    @ApiMethod(name = "tellJoke")
+    public MyBean tellJoke() {
+
+        MyBean response = new MyBean();
+        response.setData(JokeData.getRandomJoke());
 
         return response;
     }
